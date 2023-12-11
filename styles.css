@@ -16,6 +16,7 @@ header {
 	background-color: #0fbcb7;
 	text-align: center;
 	color: white;
+	border-radius: 4px;
 }
 header img {
 	height: 60px;
