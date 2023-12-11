@@ -14,7 +14,10 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="mb-4 mt-4">Page de connection</h1>
+      <header>
+        <img src="images/logo.png" alt="LOGO" />
+        <h1 class="ms-4">App Concerts</h1>
+      </header>
       <form action="page_log.html" method="post">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"
@@ -25,10 +28,8 @@
             class="form-control w-75 p-3"
             id="email"
             name="email"
+            placeholder="Veuillez renseigner votre adresse e-mail."
           />
-          <div id="emailHelp" class="form-text">
-            Veuillez renseigner votre adresse e-mail.
-          </div>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label"
@@ -39,10 +40,11 @@
             class="form-control w-75 p-3"
             id="password"
             name="password"
+            placeholder="Veuillez renseigner votre mot de passe."
           />
         </div>
         <button type="submit" class="btn btn-primary btn-lg" class="md-4">
-          Connection
+          Me connecter
         </button>
       </form>
     </div>
