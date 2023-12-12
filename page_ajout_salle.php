@@ -13,12 +13,15 @@
 <body>
   <div class="container">
     <header>
-      <img src="images/logo.png" alt="LOGO" />
+      <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
       <h1 class="ms-4">Gérez vos salles</h1>
     </header>
     <form action="page_ajout_salle.php" method="post">
-      <section class="fiches container-fluid">
-          <div class="card" style="width: 18rem;">
+    
+      <section class="fiches container-auto">
+        <div class="row">
+      <div class="col-md-12">
+          <div class="card mb-3">
             <img class="card-img-top" src="https://thumbs.dreamstime.com/b/estampille-d-exemple-28420393.jpg"
               alt="Card image cap">
             <div class="card-body">
@@ -37,7 +40,10 @@
               <input type="submit" class="btn btn-outline-primary mt-2" value="Ajouter">
             </div>
           </div>
+          </div>
+        </div>
       </section>
+    
   <?php
 
   if (isset($_POST["nom_salle"]) && isset($_POST["ville"]) && isset($_POST["code_postal"]) && isset($_POST["url_image"])){

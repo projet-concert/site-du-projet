@@ -15,7 +15,7 @@
   <body>
     <div class="container">
       <header>
-        <img src="images/logo.png" alt="LOGO" />
+        <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
         <h1 class="ms-4">App Concerts</h1>
         <button id="btn-default" class="btn btn-outline-primary me-5 pr-5">
           Par défaut
