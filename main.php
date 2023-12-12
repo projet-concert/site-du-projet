@@ -25,14 +25,21 @@
         />
       </div>
       <div class="mb-2 ml-2">
-        <button id="btn-connecter" class="btn btn-light mt-2">
-            Se connecter
-          </button>
+      <input
+          type="button"
+          name="moteurDeRecherche"
+          id="moteurDeRecherche"
+          class="form-control"
+          placeholder="Tapez votre titre"
+        />
       </div>
     </header>
     <main>
       <section class="filtres">
         <h3>Filtres</h3>
+        <input type="button"
+        
+        >
         <button id="btn-default" class="btn btn-outline-primary mt-2">
           Par défaut
         </button>
