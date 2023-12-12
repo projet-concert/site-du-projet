@@ -53,32 +53,6 @@
       </div>
     </section>
 
-    <?php
-
-    if (isset($_POST["nom_artiste"]) && isset($_POST["url_image"])) {
-      $nom_artiste = $_POST["nom_artiste"];
-      $url_image = $_POST["url_image"];
-
-      $db = new PDO("mysql:host=localhost;dbname=projet_concert;charset=utf8mb4", "root", "");
-
-      $stmt = $db->prepare("INSERT INTO salle_concert (nom_artiste, url_image) VALUES (:nom_artiste, :url_image)");
-      $stmt->bindParam(":nom_artiste", $nom_artiste);
-      $stmt->bindParam(":url_image", $url_image);
-
-      $stmt->execute();
-
-      echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>C est nickel</strong> l ajout est OK.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>';
-    }
-
-
-
-    ?>
-    </form>
-
-
 
     <div class="row">
       <?php
@@ -96,7 +70,7 @@
 <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="' . $row['url_image'] . '" alt="Card image cap">
     <div class="card-body">
-      <p class="card-text"><h2>' . $row['nom_artiste'] . '</h2>
+      <p class="card-text"><h2>' . $row['nom_artiste'] . '</h2></p>
       <input type="submit" class="btn btn-outline-primary mt-2" value="Voir les concerts">
     </div>
 </div>
@@ -105,6 +79,7 @@
       }
 
       ?>
+    </div>
 
 
 
