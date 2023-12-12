@@ -17,6 +17,9 @@
       <header>
         <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
         <h1 class="ms-4">App Concerts</h1>
+        <button id="btn-default" class="btn btn-outline-primary me-5 pr-5">
+          Par défaut
+        </button>
       </header>
       <form action="page_log.html" method="post">
         <div class="mb-3">
