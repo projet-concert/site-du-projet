@@ -46,36 +46,130 @@
           <br>
           <input type="month" id="dateChoix" name="dateChoix" class="form-control mt-2" />
         </section>
+        <form action="page_label_bis.php" method="post">
         <section class="fiches container-fluid">
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="https://thumbs.dreamstime.com/b/estampille-d-exemple-28420393.jpg"
               alt="Card image cap">
             <div class="card-body">
-              <input type="text" name="nomConcert" id="nomConcert" placeholder="Entrez le nom du concert" pattern="https://.*"
+              <input type="text" name="nom_concert" id="nom_concert" placeholder="Entrez le nom du concert" 
                 class="form-control mt-2" required />
               <br>
-              <h2><input type="text" id="dateConcert" name="dateConcert" class="form-control mt-2"
+              <h2><input type="date" id="date" name="date" class="form-control mt-2"
                   placeholder="Entrez la date du concert" required /></h2>
               <br>
-              <input type="text" id="heureConcert" name="heureConcert" class="form-control mt-2"
+              <input type="time" id="heure" name="heure" class="form-control mt-2"
                 placeholder="Entrez l'heure du concert" required />
               <br>
-              <input type="text" id="urlConcert" name="urlConcert" class="form-control mt-2"
+              <input type="text" id="url_image" name="url_image" class="form-control mt-2" pattern="https://.*"
                 placeholder="Entrez l'image du concert" required />
               <br>
-              <input type="text" id="salleConcert" name="salleConcert" class="form-control mt-2"
+              <input type="select" id="salle_concert" name="salle_concert" class="form-control mt-2"
                 placeholder="choisissez le nom de la salle" required />
               <br>
-              <input type="text" id="artisteConcert" name="artisteConcert" class="form-control mt-2"
+              <input type="select" id="artiste" name="artiste" class="form-control mt-2"
                 placeholder="choisissez le nom de l'artiste" required />
               <br>
-              <input type="text" id="themeConcert" name="themeConcert" class="form-control mt-2"
+              <input type="select" id="theme" name="theme" class="form-control mt-2"
                 placeholder="choisissez 'rap' 'rock' ou 'electro'" required />
               <br>
+              <input type="text" id="sponsor" name="sponsor" class="form-control mt-2"
+                placeholder="Renseigner les sponsors" required />
               <input type="submit" class="btn btn-outline-primary mt-2" value="Ajouter">
             </div>
           </div>
       </section>
+
+      <?php
+
+  if (isset($_POST["nom_concert"]) && isset($_POST["date"]) && isset($_POST["heure"]) && isset($_POST["url_image"]) && isset($_POST["salle_concert"]) && isset($_POST["artiste"]) && isset($_POST["theme"])&& isset($_POST["sponsor"])){
+  $nom_concert = $_POST["nom_concert"];
+  $date = $_POST["date"];
+  $heure = $_POST["heure"];
+  $url_image = $_POST["url_image"];
+  $salle_concert = $_POST["salle_concert"];
+  $rtiste_concert = $_POST["artiste"];
+  $theme = $_POST["theme"];
+  $sponsor = $_POST["sponsor"];
+
+
+  $db = new PDO("mysql:host=localhost;dbname=projet_concert;charset=utf8mb4", "root", "");
+
+  $stmt = $db->prepare("INSERT INTO concert (nom_concert, date, heure, url_image, salle_concert, artiste, theme, sponsor) VALUES (:nom_concert, :date, :heure, :url_image, :salle_concert, :artiste, :theme)");
+  $stmt->bindParam(":nom_concert", $nom_concert);
+  $stmt->bindParam(":date", $date);
+  $stmt->bindParam(":heure", $heure);
+  $stmt->bindParam(":url_image", $url_image);
+  $stmt->bindParam(":salle_concert", $salle_concert);
+  $stmt->bindParam(":artiste", $artiste);
+  $stmt->bindParam(":theme", $theme);
+  $stmt->bindParam(":sponsor", $sponsor);
+
+  $stmt->execute();
+
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>C est nickel</strong> l ajout est OK.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>';
+}
+
+
+    ?>
+      </form>
+
+      <div class="row">
+<?php
+
+$db = new PDO("mysql:host=localhost;dbname=projet_concert;charset=utf8mb4", "root", "");
+
+$data = $db->query("SELECT * FROM concert")->fetchALL();
+
+foreach ($data as $row) {
+  echo '
+  <div class="card text-center" style="width: 28em;">
+  <img class="card-img-top" src="'.$row['url_image'].'" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text"><h2>Nom du Concert : </h2></p>
+    <p>'.$row['nom_concert'].'</p>
+    <br>
+    <h2>Date du concert:</h2>
+      <p>'.$row['date'].'<p>
+    <br>
+    <h2>Heure du concert:</h2>
+      <p>'.$row['heure'].'<p>
+    <br>
+    <h2>Listes des sponsors :</h2>
+   <p>'.$row['sponsor'].'</p>
+    <br>
+    <h2>Nom de la salle :</h2>
+    <p>'.$row['salle_concert'].'</p>
+    <br>
+    <h2>Nom de l\'artiste :</h2>
+      <p>'.$row['artiste'].'<p>
+    <br>
+    <h2>Thème des couleurs :</h2>
+      <p>'.$row['theme'].'<p>
+    <br>
+    <input
+   type="button"
+   name="btnModifier"
+   id="btnModifier"
+   class="btn btn-primary btn-lg"
+   value="Modifier"
+   />
+    <input
+   type="button"
+   name="btnSuprimer"
+   id="btnSuprimer"
+   class="btn btn-secondary btn-lg"
+   value="Suprimer"
+   />
+  </div>
+</div>';
+}
+  
+  ?>
+  
     <section class="fiches container-fluid">
         <div class="card text-center" style="width: 28em;">
             <img class="card-img-top" src="https://www.ccc-lyon.com/sites/congres/files/styles/lfe_home_slider/public/2021-06/2-gradins-pleins-quentin-lafont.jpg?itok=6Kw1rk6r" alt="Card image cap">
