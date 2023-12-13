@@ -15,7 +15,7 @@
     <header>
       <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
       <h1 class="ms-4">Ajout artiste</h1>
-      <a href="page_label_bis.php" class="btn btn-outline-secondary">Ajouter une salle</a>
+      <a href="page_label_bis.php" class="btn btn-outline-secondary">Ajouter un concert</a>
     </header>
     <form action="page_ajout_artiste.php" method="post">
     

@@ -11,7 +11,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="container">
     <header>
         <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
         <h1>Gerez vos artistes</h1>
@@ -20,7 +20,7 @@
           <label for="moteurDeRecherche" class="form-label"></label>
           <input type="text" id="moteurDeRecherche" class="form-control" placeholder="Effectuez une recherche"/>
         <div class="mb-2 ml-2">
-          <a href="page_ajout_artiste.php" class="btn btn-outline-secondary mt-2">Ajouter un Artiste</a>
+          <a href="page_ajout_artiste.php" class="btn btn-outline-primary mt-2">Ajouter un Artiste</a>
         </div>
         </div>
       </header>

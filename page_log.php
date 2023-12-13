@@ -49,6 +49,9 @@
 
     <?php
 
+
+
+if (isset($_POST["email"]) && isset($_POST["password"])){
     $email = $_POST["email"];
     $pass = $_POST["password"];
 
@@ -72,9 +75,10 @@
           header('Location: page_ajout_salle.php');
           } 
         else {
-          echo "<br> <p class='text-center'> You have entered the wrong username or password. Please try again. </p> <br>";
+          echo "<br> <p class='text-center'>Vous avez entré les mauvais identifiants. Essayez encore s'il vous plait. </p> <br>";
 
         }
+}
     ?>
 
     <script>

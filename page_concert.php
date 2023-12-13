@@ -12,60 +12,46 @@
 
 <body>
   <header>
-    <img class="artiste" src="images/logo.png" alt="LOGO" />
+  <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
     <h1 class="ms-4">Page Concert</h1>
   </header>
   </div>
-
-
-  <section class="filtres">
-    <h3>Entrez votre date</h3>
-    <br>
-    <input type="month" id="dateChoix" name="dateChoix" class="form-control mt-2" />
-  </section>
-  <section class="fiches container-fluid">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top"
-        src="https://www.ccc-lyon.com/sites/congres/files/styles/lfe_home_slider/public/2021-06/2-gradins-pleins-quentin-lafont.jpg?itok=6Kw1rk6r"
-        alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">
-        <h2>Binks to binks</h2>
-        </p>
-        <h4>Ninho</h4>
-        <br>
-        <p>Marseille 13015</p>
-        <p>Le dôme</p>
-      </div>
-    </div>
-  </section>
-
 
   <div class="row">
     <?php
 
     $db = new PDO("mysql:host=localhost;dbname=projet_concert;charset=utf8mb4", "root", "");
 
-    $data = $db->query("SELECT * FROM concert")->fetchALL();
+    // $data = $db->query("SELECT * FROM concert")->fetchALL();
+
+    $data = $db->query("SELECT * 
+                    FROM artiste
+                    INNER JOIN concert ON artiste.id = concert.artiste
+                    INNER JOIN theme ON concert.theme = theme.id
+                    INNER JOIN salle_concert ON concert.salle_concert = salle_concert.id")->fetchALL();
 
     foreach ($data as $row) {
 
 
 
       echo '
-<section class="fiches container-fluid">
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="' . $row['url_image'] . '" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-text"><h2>' . $row['nom_concert'] . '</h2></p>
-      <p class="card-text">' . $row['date'] . '</p>
-      <p class="card-text">' . $row['heure'] . '</p>
-      <p class="card-text">' . $row['salle_concert'] . '</p>
-      <p class="card-text">' . $row['theme'] . '</p>
-      <p class="card-text">' . $row['sponsor'] . '</p>
-    </div>
-</div>
-</section>';
+        <section class="fiches container-fluid">
+        <div class="row row-cols-3">
+        <div class="card col" style="width: 18rem;">
+            <img class="card-img-top" src="' . $row['url_image'] . '" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text"><h2>' . $row['nom_concert'] . '</h2></p>
+              <p class="card-text"><h4>' . $row['nom_artiste'] . '</h4></p>
+              <p class="card-text">Date : ' . $row['date_concert'] . '</p>
+              <p class="card-text">Heure : ' . $row['heure'] . '</p>
+              <p class="card-text">Lieu : ' . $row['nom_salle'] . '</p>
+              <p class="card-text">à : ' . $row['ville'] . ', ' . $row['code_postal'] . '</p>
+              <p class="card-text">Type : ' . $row['nom_theme'] . '</p>
+              <p class="card-text">Sponsor : ' . $row['sponsor'] . '</p>
+            </div>
+        </div>
+        </div>
+        </section>';
 
     }
 

@@ -35,24 +35,6 @@
       <input type="month" id="dateChoix" name="dateChoix" class="form-control mt-2" />
     </section>
 
-    <!-- Fiches produits -->
-    <section class="fiches container-fluid">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Festival_des_Vieilles_Charrues_2022_-_Ninho_-_041.jpg/330px-Festival_des_Vieilles_Charrues_2022_-_Ninho_-_041.jpg"
-          alt="Card image cap">
-        <div class="card-body">
-          <p class="card-text">
-          <h2>Ninho</h2>
-          <br>
-          Ouai c'est Ninho
-          </p>
-          <input type="submit" class="btn btn-outline-primary mt-2" value="Voir les concerts">
-        </div>
-      </div>
-    </section>
-
-
     <div class="row">
       <?php
 
@@ -70,7 +52,7 @@
     <img class="card-img-top" src="' . $row['url_image'] . '" alt="Card image cap">
     <div class="card-body">
       <p class="card-text"><h2>' . $row['nom_artiste'] . '</h2></p>
-      <input type="submit" class="btn btn-outline-primary mt-2" value="Voir les concerts">
+      <a href="page_concert.php" class="btn btn-outline-primary mt-2">Voir les concerts</a>
     </div>
 </div>
 </section>';
@@ -79,12 +61,6 @@
 
       ?>
     </div>
-
-
-
-
-
-
 
   </main>
   <script type="module" src="event.js"></script>

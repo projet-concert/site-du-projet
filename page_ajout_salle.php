@@ -97,8 +97,8 @@ foreach ($data as $row) {
               <h2>'.$row['nom_salle'].'</h2>
               </p>
               <br>
-              <p>'.$row['ville'].'</p>
-              <p>'.$row['code_postal'].'</p>
+              <p>Ville : '.$row['ville'].'</p>
+              <p>Code postal : '.$row['code_postal'].'</p>
               <input type="submit" class="btn btn-danger mt-2" value="Supprimer">
             </div>
           </div>
