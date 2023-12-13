@@ -52,8 +52,6 @@
     $email = $_POST["email"];
     $pass = $_POST["password"];
 
-    echo "<br> <p class='text-center'> $email $pass </p> <br>";
-
     $db = new PDO('mysql:host=localhost;dbname=projet_concert;charset=utf8mb4','root','');
 
     $data = $db->query('SELECT * FROM user')->fetchAll() ;
@@ -67,10 +65,13 @@
 
       }
 
-        if ($success) {
+        if ($success and $row['role'] == 1 ) {
+          header('Location: page_label_bis.php');
+          } 
+        elseif ($success and $row['role'] == 2 ) {
           header('Location: page_ajout_salle.php');
-          echo "<br> <p class='text-center'>Hi ".$row['nom']." you have been logged in. </p> <br>";
-          } else {
+          } 
+        else {
           echo "<br> <p class='text-center'> You have entered the wrong username or password. Please try again. </p> <br>";
 
         }

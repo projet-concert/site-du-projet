@@ -18,7 +18,6 @@
       <input type="text" id="moteurDeRecherche" class="form-control" placeholder="Tapez votre titre" />
     </div>
     <div class="mb-2 ml-2">
-      <!-- <input type="submit" class="btn btn-light mt-2" value="Se connecter"> -->
       <a href="page_log.php" class="btn btn-light mt-2">Se connecter</a>
     </div>
   </header>

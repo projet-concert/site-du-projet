@@ -13,43 +13,22 @@
   </head>
   <body>
     <header>
-        <img src="images/logo.png" alt="LOGO" />
-        <h1 class="ms-4">Gerez vos artistes</h1>
-        <div class="mb-4 me-5">
+        <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
+        <h1>Gerez vos artistes</h1>
+        <div class="row">
+        <div class="mb-4 me-4">
           <label for="moteurDeRecherche" class="form-label"></label>
-          <input
-            type="text"
-            id="moteurDeRecherche"
-            class="form-control"
-            placeholder="Effectuez une recherche"
-          />
-          <a href="page_ajout_artiste.php" class="btn btn-outline-secondary">Ajouter un Artiste</a>
+          <input type="text" id="moteurDeRecherche" class="form-control" placeholder="Effectuez une recherche"/>
+        <div class="mb-2 ml-2">
+          <a href="page_ajout_artiste.php" class="btn btn-outline-secondary mt-2">Ajouter un Artiste</a>
+        </div>
+        </div>
       </header>
       <main>
-        <section class="filtres">
-          <h3>Filtres</h3>
-          <button id="btn-default" class="btn btn-outline-primary mt-2">
-            Trier au plus récent
-          </button>
-          <br>
-          <button id="btn-artiste" class="btn btn-outline-success mt-2">
-            Trier par artiste
-          </button>
-          <br>
-          <br>
-          <input
-            type="text"
-            id="keyword"
-            name="keyword"
-            class="form-control mt-2"
-            placeholder="Entrez votre artiste"
-          />
-          <br>
-          <input type="month" id="dateChoix" name="dateChoix" class="form-control mt-2" />
-        </section>
         <form action="page_label_bis.php" method="post">
+        <div class="col-md-4">
         <section class="fiches container-fluid">
-          <div class="card" style="width: 18rem;">
+          <div class="card" style="width: 22em;">
             <img class="card-img-top" src="https://thumbs.dreamstime.com/b/estampille-d-exemple-28420393.jpg"
               alt="Card image cap">
             <div class="card-body">
@@ -125,6 +104,7 @@
             </div>
           </div>
       </section>
+      </div>
 
       <?php
 
@@ -163,47 +143,43 @@
 
     ?>
       </form>
-
-      <div class="row">
 <?php
 
 $db = new PDO("mysql:host=localhost;dbname=projet_concert;charset=utf8mb4", "root", "");
 
-$data = $db->query("SELECT * FROM concert")->fetchALL();
+$data = $db->query("SELECT * 
+                    FROM artiste
+                    INNER JOIN concert ON artiste.id = concert.artiste
+                    INNER JOIN theme ON concert.theme = theme.id
+                    INNER JOIN salle_concert ON concert.salle_concert = salle_concert.id")->fetchALL();
 
 foreach ($data as $row) {
   echo '
-  <div class="card text-center" style="width: 28em;">
+  <div class="col-md-4">
+  <div class="card text-center" style="width: 22em;">
   <img class="card-img-top" src="'.$row['url_image'].'" alt="Card image cap">
   <div class="card-body">
     <p class="card-text"><h2>Nom du Concert : </h2></p>
     <p>'.$row['nom_concert'].'</p>
     <br>
-    <h2>Date du concert:</h2>
+    <h5>Date du concert:</h5>
       <p>'.$row['date_concert'].'<p>
-    <br>
-    <h2>Heure du concert:</h2>
+    
+    <h5>Heure du concert:</h5>
       <p>'.$row['heure'].'<p>
-    <br>
-    <h2>Listes des sponsors :</h2>
+    
+    <h5>Listes des sponsors :</h5>
    <p>'.$row['sponsor'].'</p>
-    <br>
-    <h2>Nom de la salle :</h2>
-    <p>'.$row['salle_concert'].'</p>
-    <br>
-    <h2>Nom de l\'artiste :</h2>
-      <p>'.$row['artiste'].'<p>
-    <br>
-    <h2>Thème des couleurs :</h2>
-      <p>'.$row['theme'].'<p>
-    <br>
-    <input
-   type="button"
-   name="btnModifier"
-   id="btnModifier"
-   class="btn btn-primary btn-lg"
-   value="Modifier"
-   />
+    
+    <h5>Nom de la salle :</h5>
+    <p>'.$row['nom_salle'].'</p>
+
+    <h5>Nom de l\'artiste :</h5>
+      <p>'.$row['nom_artiste'].'<p>
+    
+    <h5>Thème des couleurs :</h5>
+      <p>'.$row['nom_theme'].'<p>
+    
     <input
    type="button"
    name="btnSuprimer"
@@ -212,58 +188,11 @@ foreach ($data as $row) {
    value="Suprimer"
    />
   </div>
+</div>
 </div>';
 }
   
   ?>
-  
-    <section class="fiches container-fluid">
-        <div class="card text-center" style="width: 28em;">
-            <img class="card-img-top" src="https://www.ccc-lyon.com/sites/congres/files/styles/lfe_home_slider/public/2021-06/2-gradins-pleins-quentin-lafont.jpg?itok=6Kw1rk6r" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text"><h2>Nom du Concert : </h2></p>
-              <p>Binks to binks</p>
-              <br>
-              <h2>Date du concert:</h2>
-                <p>15 Décembre<p>
-              <br>
-              <h2>Heure du concert:</h2>
-                <p>20H30<p>
-              <br>
-              <h2>Listes des sponsors :</h2>
-             <p>Universal</p>
-             <p>Skyrock</p>
-              <br>
-              <h2>Nom de la salle :</h2>
-              <p>Le dôme</p>
-              <br>
-              <h2>Nom de l'artiste :</h2>
-                <p>Ninho<p>
-              <br>
-              <h2>Nom des sponsors :</h2>
-                <p>Universal<p>
-                <p>Skyrock<p>
-              <br>
-              <h2>Thème des couleurs :</h2>
-                <p>Rap<p>
-              <br>
-              <input
-             type="button"
-             name="btnModifier"
-             id="btnModifier"
-             class="btn btn-primary btn-lg"
-             value="Modifier"
-             />
-              <input
-             type="button"
-             name="btnSuprimer"
-             id="btnSuprimer"
-             class="btn btn-secondary btn-lg"
-             value="Suprimer"
-             />
-            </div>
-        </div>
-      </section>
     </main>
     <script type="module" src="event.js"></script>
     <script
