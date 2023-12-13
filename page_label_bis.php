@@ -63,14 +63,17 @@
               <input type="text" id="urlConcert" name="urlConcert" class="form-control mt-2"
                 placeholder="Entrez l'image du concert" required />
               <br>
-              <input type="text" id="salleConcert" name="salleConcert" class="form-control mt-2"
-                placeholder="choisissez le nom de la salle" required />
+                <select class="form-select" name="choix_salle">
+                <option value="Amphi">Amphi</option>
+              </select>
               <br>
-              <input type="text" id="artisteConcert" name="artisteConcert" class="form-control mt-2"
-                placeholder="choisissez le nom de l'artiste" required />
+              <select class="form-select" name="choix_artiste">
+                <option value="ninho">Ninho</option>
+              </select>
               <br>
-              <input type="text" id="themeConcert" name="themeConcert" class="form-control mt-2"
-                placeholder="choisissez 'rap' 'rock' ou 'electro'" required />
+              <select class="form-select" name="choix_theme">
+                <option value="rap">Rap</option>
+              </select>
               <br>
               <input type="submit" class="btn btn-outline-primary mt-2" value="Ajouter">
             </div>
