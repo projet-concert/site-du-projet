@@ -31,12 +31,6 @@ main {
 	flex-direction: row;
 }
 
-/* img.card-img-top {
-	width: 30px;
-	height: 800px;
-	object-fit: cover;
-} */
-
 .fiches {
 	display: inline-block;
 	flex: 1;
@@ -137,7 +131,7 @@ main {
 }
 
 .test2 {
-	margin: 11%;
+	margin: 8%;
 }
 
 .container.affiche1 {

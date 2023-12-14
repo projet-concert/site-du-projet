@@ -34,7 +34,7 @@
 <div class="card test42" style="width: 18rem;">
     <img class="card-img-top" src="' . $row['url_image_artiste'] . '" alt="Card image cap">
     <div class="card-body">
-      <p class="card-text"><h2>' . $row['nom_artiste'] . '</h2></p>
+      <p class="card-text"><h2><b>' . $row['nom_artiste'] . '</b></h2></p>
       <a href="'.$row['url_info_artiste'].'" class="btn btn-outline-primary mt-2" target="_blank">À propos</a>
       <a href="page_concert.php" class="btn btn-outline-primary mt-2">Voir les concerts</a>
       

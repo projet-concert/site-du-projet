@@ -43,8 +43,7 @@
       <div class="card text-center" style="width: 20em;">
       <img class="card-img-top" src="'.$row['url_image'].'" alt="Card image cap">
       <div class="card-body">
-        <p class="card-text"><h2>Nom du Concert : </h2></p>
-        <p>'.$row['nom_concert'].'</p>
+        <h3><b>'.$row['nom_concert'].'</b></h3>
         <br>
         <h5>Date du concert:</h5>
           <p>'.$row['date_concert'].'<p>
@@ -56,7 +55,7 @@
         <p>'.$row['nom_salle'].'</p>
     
         <h5>Nom de l\'artiste :</h5>
-        <p>'.$row['nom_artiste'].'<p>
+        <p><b>'.$row['nom_artiste'].'</b><p>
         
         <h5>Thème des couleurs :</h5>
         <p>'.$row['nom_theme'].'<p>

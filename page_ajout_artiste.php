@@ -34,6 +34,10 @@
 
               <input type="text" name="url_info_artiste" id="url_info_artiste" placeholder="Url du site d'information de l'artiste" pattern="https://.*"
                 class="form-control mt-2" required />
+              <br>
+              <input type="reset" class="btn btn-danger" value="Clear" />
+              <br>
+              <br>
               <input type="submit" class="btn btn-outline-primary mt-2" value="Ajouter">
             </div>
           </div>
@@ -59,7 +63,7 @@ if (isset($_POST["nom_artiste"])  && isset($_POST["url_image"]) && isset($_POST[
   $stmt->execute();
 
   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>C est nickel</strong> l ajout est OK.
+  <strong>C est nickel</strong> l\'ajout est OK.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>';
 }
@@ -82,7 +86,7 @@ echo '
 <div class="card test42" style="width: 18rem;">
     <img class="card-img-top" src="' . $row['url_image_artiste'] . '" alt="Card image cap">
     <div class="card-body">
-      <p class="card-text"><h2>' . $row['nom_artiste'] . '</h2></p>
+      <p class="card-text"><h2><b>' . $row['nom_artiste'] . '</b></h2></p>
       <a href="'.$row['url_info_artiste'].'" class="btn btn-outline-primary mt-2" target="_blank">À propos</a>
       
     </div>

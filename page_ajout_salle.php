@@ -25,7 +25,7 @@
             <img class="card-img-top" src="https://thumbs.dreamstime.com/b/estampille-d-exemple-28420393.jpg"
               alt="Card image cap">
             <div class="card-body">
-              <input type="text" name="url_image" id="url_image" placeholder="Url de votre image" pattern="https://.*"
+              <input type="text" name="url_image_concert" id="url_image_concert" placeholder="Url de votre image" pattern="https://.*"
                 class="form-control mt-2" required />
               <br>
               <h2><input type="text" id="nom_salle" name="nom_salle" class="form-control mt-2"
@@ -37,6 +37,9 @@
               <input type="int" id="code_postal" name="code_postal" class="form-control mt-2"
                 placeholder="Entrez le code postal" required />
               <br>
+              <input type="reset" class="btn btn-danger" value="Clear" />
+              <br>
+              <br>
               <input type="submit" class="btn btn-outline-primary mt-2" value="Ajouter">
             </div>
           </div>
@@ -46,24 +49,24 @@
     
   <?php
 
-  if (isset($_POST["nom_salle"]) && isset($_POST["ville"]) && isset($_POST["code_postal"]) && isset($_POST["url_image"])){
+  if (isset($_POST["nom_salle"]) && isset($_POST["ville"]) && isset($_POST["code_postal"]) && isset($_POST["url_image_concert"])){
     $nom_salle = $_POST["nom_salle"];
     $ville = $_POST["ville"];
     $code_postal = $_POST["code_postal"];
-    $url_image = $_POST["url_image"];
+    $url_image_concert = $_POST["url_image_concert"];
 
     $db = new PDO("mysql:host=localhost;dbname=projet_concert;charset=utf8mb4", "root", "");
 
-    $stmt = $db->prepare("INSERT INTO salle_concert (nom_salle, ville, code_postal, url_image) VALUES (:nom_salle, :ville, :code_postal, :url_image)");
+    $stmt = $db->prepare("INSERT INTO salle_concert (nom_salle, ville, code_postal, url_image_concert) VALUES (:nom_salle, :ville, :code_postal, :url_image_concert)");
     $stmt->bindParam(":nom_salle", $nom_salle);
     $stmt->bindParam(":ville", $ville);
     $stmt->bindParam(":code_postal", $code_postal);
-    $stmt->bindParam(":url_image", $url_image);
+    $stmt->bindParam(":url_image_concert", $url_image_concert);
 
     $stmt->execute();
 
     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>C est nickel</strong> l ajout est OK.
+    <strong>C est nickel</strong> l\'ajout est OK.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>';
   }
@@ -88,7 +91,7 @@ foreach ($data as $row) {
 
  echo '
          <section class="fiches2 container-fluid">
-          <div class="card test2" style="width: 18rem;">
+          <div class="card test2" style="width: 20rem;">
             <img class="card-img-top"
               src="'.$row['url_image_concert'].'"
               alt="Card image cap">

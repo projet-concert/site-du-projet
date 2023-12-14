@@ -94,6 +94,10 @@
               <br>
               <input type="text" id="sponsor" name="sponsor" class="form-control mt-2"
                 placeholder="Renseigner les sponsors" required />
+              <br>
+              <input type="reset" class="btn btn-danger" value="Clear" />
+              <br>
+              <br>
               <input type="submit" class="btn btn-outline-primary mt-2" value="Ajouter">
             </div>
           </div>
@@ -129,7 +133,7 @@
 
   
   echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>C est nickel</strong> l ajout est OK.
+  <strong>C est nickel</strong> l\'ajout est OK.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>';
 }
@@ -155,7 +159,7 @@ foreach ($data as $row) {
   <img class="card-img-top" src="'.$row['url_image'].'" alt="Card image cap">
   <div class="card-body">
     <p class="card-text"><h2>Nom du Concert : </h2></p>
-    <p>'.$row['nom_concert'].'</p>
+    <h3><b>'.$row['nom_concert'].'</b></h3>
     <br>
     <h5>Date du concert:</h5>
       <p>'.$row['date_concert'].'<p>
@@ -170,7 +174,7 @@ foreach ($data as $row) {
     <p>'.$row['nom_salle'].'</p>
 
     <h5>Nom de l\'artiste :</h5>
-    <p>'.$row['nom_artiste'].'<p>
+    <p><b>'.$row['nom_artiste'].'</b><p>
     
     <h5>Thème des couleurs :</h5>
     <p>'.$row['nom_theme'].'<p>
