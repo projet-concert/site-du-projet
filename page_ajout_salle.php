@@ -11,15 +11,15 @@
 </head>
 
 <body>
-  <div class="container">
     <header>
-      <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
+      <a href="main.php"><img src="images/logo1.png" alt="LOGO" /></a>
       <h1 class="ms-4">Gérez vos salles</h1>
     </header>
+    <div class="container alignement">
     <form action="page_ajout_salle.php" method="post">
     
       <section class="fiches container-auto">
-        <div class="row">
+        <div class="row blabla">
       <div class="col-md-12">
           <div class="card mb-3">
             <img class="card-img-top" src="https://thumbs.dreamstime.com/b/estampille-d-exemple-28420393.jpg"
@@ -87,10 +87,10 @@ foreach ($data as $row) {
 
 
  echo '
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
+         <section class="fiches2 container-fluid">
+          <div class="card test2" style="width: 18rem;">
             <img class="card-img-top"
-              src="'.$row['url_image'].'"
+              src="'.$row['url_image_concert'].'"
               alt="Card image cap">
             <div class="card-body">
               <p class="card-text">
@@ -102,10 +102,9 @@ foreach ($data as $row) {
               <input type="submit" class="btn btn-danger mt-2" value="Supprimer">
             </div>
           </div>
-        </div>';
+        </section>';
 
 }
-
 ?>
 </div>
   </div>

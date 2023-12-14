@@ -11,31 +11,14 @@
 
 <body>
   <header>
-    <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
+    <a href="main.php"><img src="images/logo1.png" class="taille_image" alt="LOGO" /></a>
     <h1>App Concerts</h1>
-    <div class="mb-4 me-5">
-      <label for="moteurDeRecherche" class="form-label"></label>
-      <input type="text" id="moteurDeRecherche" class="form-control" placeholder="Tapez votre titre" />
-    </div>
-    <div class="mb-2 ml-2">
+    <div class="btn-connect">
       <a href="page_log.php" class="btn btn-light mt-2">Se connecter</a>
     </div>
   </header>
   <main>
-    <section class="filtres">
-      <h3>Filtres</h3>
-      <input type="submit" class="btn btn-outline-primary mt-2" value="Par défaut">
-      <br>
-      <input type="submit" class="btn btn-outline-secondary mt-2" value="Trier par date">
-      <br>
-      <input type="submit" class="btn btn-outline-success mt-2" value="Artiste">
-      <br>
-      <input type="text" id="keyword" name="keyword" class="form-control mt-2" placeholder="Entrez votre artiste" />
-      <br>
-      <input type="month" id="dateChoix" name="dateChoix" class="form-control mt-2" />
-    </section>
-
-    <div class="row">
+    <div class="row test">
       <?php
 
       $db = new PDO("mysql:host=localhost;dbname=projet_concert;charset=utf8mb4", "root", "");
@@ -48,11 +31,13 @@
 
         echo '
 <section class="fiches container-fluid">
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="' . $row['url_image'] . '" alt="Card image cap">
+<div class="card test42" style="width: 18rem;">
+    <img class="card-img-top" src="' . $row['url_image_artiste'] . '" alt="Card image cap">
     <div class="card-body">
       <p class="card-text"><h2>' . $row['nom_artiste'] . '</h2></p>
+      <a href="'.$row['url_info_artiste'].'" class="btn btn-outline-primary mt-2" target="_blank">À propos</a>
       <a href="page_concert.php" class="btn btn-outline-primary mt-2">Voir les concerts</a>
+      
     </div>
 </div>
 </section>';

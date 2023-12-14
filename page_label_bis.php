@@ -11,23 +11,17 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="container">
+  <body>
     <header>
-        <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
-        <h1>Gerez vos artistes</h1>
-        <div class="row">
-        <div class="mb-4 me-4">
-          <label for="moteurDeRecherche" class="form-label"></label>
-          <input type="text" id="moteurDeRecherche" class="form-control" placeholder="Effectuez une recherche"/>
-        <div class="mb-2 ml-2">
-          <a href="page_ajout_artiste.php" class="btn btn-outline-primary mt-2">Ajouter un Artiste</a>
-        </div>
-        </div>
+        <a href="main.php"><img src="images/logo1.png" alt="LOGO" /></a>
+        <h1>Gerez vos concerts</h1>       
+        <a href="page_ajout_artiste.php" class="btn btn-light mt-2">Ajouter un artiste</a>
       </header>
       <main>
+      <div class="container test8">
         <form action="page_label_bis.php" method="post">
         <div class="col-md-4">
-        <section class="fiches container-fluid">
+        <section class="fiches6 container-fluid">
           <div class="card" style="width: 22em;">
             <img class="card-img-top" src="https://thumbs.dreamstime.com/b/estampille-d-exemple-28420393.jpg"
               alt="Card image cap">
@@ -155,6 +149,7 @@ $data = $db->query("SELECT *
 
 foreach ($data as $row) {
   echo '
+  <section class="fiches2 container-fluid">
   <div class="col-md-4">
   <div class="card text-center" style="width: 22em;">
   <img class="card-img-top" src="'.$row['url_image'].'" alt="Card image cap">
@@ -169,16 +164,16 @@ foreach ($data as $row) {
       <p>'.$row['heure'].'<p>
     
     <h5>Listes des sponsors :</h5>
-   <p>'.$row['sponsor'].'</p>
+    <p>'.$row['sponsor'].'</p>
     
     <h5>Nom de la salle :</h5>
     <p>'.$row['nom_salle'].'</p>
 
     <h5>Nom de l\'artiste :</h5>
-      <p>'.$row['nom_artiste'].'<p>
+    <p>'.$row['nom_artiste'].'<p>
     
     <h5>Thème des couleurs :</h5>
-      <p>'.$row['nom_theme'].'<p>
+    <p>'.$row['nom_theme'].'<p>
     
     <input
    type="button"
@@ -189,12 +184,13 @@ foreach ($data as $row) {
    />
   </div>
 </div>
-</div>';
+</div>
+</section>';
 }
   
   ?>
+  </div>
     </main>
-    <script type="module" src="event.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

@@ -13,11 +13,11 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="container">
       <header>
-        <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
+        <a href="main.php"><img src="images/logo1.png" alt="LOGO" /></a>
         <h1 class="ms-4">App Concerts</h1>
       </header>
+      <div class="container">
       <form action="page_log.php" method="post">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"

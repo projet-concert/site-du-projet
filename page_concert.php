@@ -12,12 +12,15 @@
 
 <body>
   <header>
-  <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
+    <a href="main.php"><img src="images/logo1.png" alt="LOGO" /></a>
     <h1 class="ms-4">Page Concert</h1>
+    <div class="btn-connect">
+      <a href="page_log.php" class="btn btn-light mt-2">Se connecter</a>
+    </div>
   </header>
   </div>
 
-  <div class="row">
+  <div class="row test23">
     <?php
 
     $db = new PDO("mysql:host=localhost;dbname=projet_concert;charset=utf8mb4", "root", "");
@@ -35,23 +38,37 @@
 
 
       echo '
-        <section class="fiches container-fluid">
-        <div class="row row-cols-3">
-        <div class="card col" style="width: 18rem;">
-            <img class="card-img-top" src="' . $row['url_image'] . '" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text"><h2>' . $row['nom_concert'] . '</h2></p>
-              <p class="card-text"><h4>' . $row['nom_artiste'] . '</h4></p>
-              <p class="card-text">Date : ' . $row['date_concert'] . '</p>
-              <p class="card-text">Heure : ' . $row['heure'] . '</p>
-              <p class="card-text">Lieu : ' . $row['nom_salle'] . '</p>
-              <p class="card-text">à : ' . $row['ville'] . ', ' . $row['code_postal'] . '</p>
-              <p class="card-text">Type : ' . $row['nom_theme'] . '</p>
-              <p class="card-text">Sponsor : ' . $row['sponsor'] . '</p>
-            </div>
-        </div>
-        </div>
-        </section>';
+      <section class="fiches1 container-fluid test23">
+      <div class="row-cols-3 test24">
+      <div class="card text-center" style="width: 20em;">
+      <img class="card-img-top" src="'.$row['url_image'].'" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text"><h2>Nom du Concert : </h2></p>
+        <p>'.$row['nom_concert'].'</p>
+        <br>
+        <h5>Date du concert:</h5>
+          <p>'.$row['date_concert'].'<p>
+        
+        <h5>Heure du concert:</h5>
+          <p>'.$row['heure'].'<p>
+        
+        <h5>Nom de la salle :</h5>
+        <p>'.$row['nom_salle'].'</p>
+    
+        <h5>Nom de l\'artiste :</h5>
+        <p>'.$row['nom_artiste'].'<p>
+        
+        <h5>Thème des couleurs :</h5>
+        <p>'.$row['nom_theme'].'<p>
+
+        <h5>Listes des sponsors :</h5>
+        <p>'.$row['sponsor'].'</p>
+        
+        
+      </div>
+    </div>
+    </div>
+    </section>';
 
     }
 

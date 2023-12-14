@@ -11,16 +11,16 @@
 </head>
 
 <body>
-  <div class="container">
     <header>
-      <a href="main.php"><img src="images/logo.png" alt="LOGO" /></a>
+      <a href="main.php"><img src="images/logo1.png" alt="LOGO" /></a>
       <h1 class="ms-4">Ajout artiste</h1>
-      <a href="page_label_bis.php" class="btn btn-outline-secondary">Ajouter un concert</a>
+      <a href="page_label_bis.php" class="btn btn-light">Ajouter un concert</a>
     </header>
+    <div class="container affiche1">
     <form action="page_ajout_artiste.php" method="post">
     
-      <section class="fiches container-auto">
-        <div class="row">
+      <section class="fiches3 container-auto">
+        <div class="row test4">
       <div class="col-md-12">
           <div class="card mb-3">
             <img class="card-img-top" src="https://thumbs.dreamstime.com/b/estampille-d-exemple-28420393.jpg"
@@ -31,6 +31,9 @@
               <br>
               <h2><input type="text" id="nom_artiste" name="nom_artiste" class="form-control mt-2"
                   placeholder="Entrez le nom de votre artiste" required /></h2>
+
+              <input type="text" name="url_info_artiste" id="url_info_artiste" placeholder="Url du site d'information de l'artiste" pattern="https://.*"
+                class="form-control mt-2" required />
               <input type="submit" class="btn btn-outline-primary mt-2" value="Ajouter">
             </div>
           </div>
@@ -41,15 +44,17 @@
 
 <?php
 
-if (isset($_POST["nom_artiste"])  && isset($_POST["url_image"])){
+if (isset($_POST["nom_artiste"])  && isset($_POST["url_image"]) && isset($_POST["url_info_artiste"])){
   $nom_artiste = $_POST["nom_artiste"];
   $url_image = $_POST["url_image"];
+  $url_info_artiste = $_POST["url_info_artiste"];
 
   $db = new PDO("mysql:host=localhost;dbname=projet_concert;charset=utf8mb4", "root", "");
 
-  $stmt = $db->prepare("INSERT INTO artiste (nom_artiste, url_image) VALUES (:nom_artiste, :url_image)");
+  $stmt = $db->prepare("INSERT INTO artiste (nom_artiste, url_image_artiste, url_info_artiste) VALUES (:nom_artiste, :url_image_artiste, :url_info_artiste)");
   $stmt->bindParam(":nom_artiste", $nom_artiste);
-  $stmt->bindParam(":url_image", $url_image);
+  $stmt->bindParam(":url_image_artiste", $url_image);
+  $stmt->bindParam(":url_info_artiste", $url_info_artiste);
 
   $stmt->execute();
 
@@ -62,9 +67,7 @@ if (isset($_POST["nom_artiste"])  && isset($_POST["url_image"])){
 ?>
 </form>
 
-
-
-<div class="row">
+<div class="row test4">
 <?php
 
 $db = new PDO("mysql:host=localhost;dbname=projet_concert;charset=utf8mb4", "root", "");
@@ -74,15 +77,17 @@ $data = $db->query("SELECT * FROM artiste")->fetchALL();
 foreach ($data as $row) {
 
 echo '
-<div class="col-md-4">
-  <div class="card mb-4">
-    <img class="card-img-top" src="' . $row['url_image'] . '" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">' . $row['nom_artiste'] . '</h5>
-    </div>
-  </div>
-</div>';
 
+<section class="fiches container-fluid">
+<div class="card test42" style="width: 18rem;">
+    <img class="card-img-top" src="' . $row['url_image_artiste'] . '" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text"><h2>' . $row['nom_artiste'] . '</h2></p>
+      <a href="'.$row['url_info_artiste'].'" class="btn btn-outline-primary mt-2" target="_blank">À propos</a>
+      
+    </div>
+</div>
+</section>';
 }
  ?>
 
