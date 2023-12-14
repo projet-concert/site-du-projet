@@ -102,7 +102,6 @@ foreach ($data as $row) {
               <br>
               <p>Ville : '.$row['ville'].'</p>
               <p>Code postal : '.$row['code_postal'].'</p>
-              <input type="submit" class="btn btn-danger mt-2" value="Supprimer">
             </div>
           </div>
         </section>';

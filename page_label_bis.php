@@ -178,14 +178,6 @@ foreach ($data as $row) {
     
     <h5>Thème des couleurs :</h5>
     <p>'.$row['nom_theme'].'<p>
-    
-    <input
-   type="button"
-   name="btnSuprimer"
-   id="btnSuprimer"
-   class="btn btn-secondary btn-lg"
-   value="Suprimer"
-   />
   </div>
 </div>
 </div>
